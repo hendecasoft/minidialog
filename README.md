@@ -25,6 +25,10 @@ and  replace `VERSION` with the latest version available
 <td>
 
 ```groovy
+repositories {
+    maven 'https://maven.hendeca.moe/releases'
+}
+
 dependencies {
     implementation 'moe.hendeca:minidialog-PLATFORM:VERSION'
 }
@@ -37,6 +41,10 @@ dependencies {
 <td>
 
 ```kotlin
+repositories {
+    maven("https://maven.hendeca.moe/releases")
+}
+
 dependencies {
     implementation("moe.hendeca:minidialog-PLATFORM:VERSION")
 }
@@ -49,6 +57,14 @@ dependencies {
 <td>
 
 ```xml
+<repositories>
+    <repository>
+        <id>hendeca-releases</id>
+        <name>Hendecasoft Repository</name>
+        <url>https://maven.hendeca.moe/releases</url>
+    </repository>
+</repositories>
+
 <dependencies>
     <dependency>
         <groupId>moe.hendeca</groupId>

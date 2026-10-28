@@ -27,6 +27,7 @@ dependencies {
     compileOnly(ttdev.minecraftClient(libs.versions.minecraft))
     compileOnly(ttdev.minecraftServer(libs.versions.minecraft))
     compileOnly(libs.adventure.api)
+    compileOnly("net.kyori:adventure-platform-mod-shared:6.9.0")
 }
 
 indra {
