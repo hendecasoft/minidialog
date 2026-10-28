@@ -98,9 +98,11 @@ dependencies {
     <title>Hello &lt;b&gt;world&lt;/b&gt;!</title>
     <body>
         <message>
-            &lt;head:Wasabi_Thumbs/&gt; 
+            <![CDATA[
+            <head:Wasabi_Thumbs/> 
             Please appraise my 
-            &lt;aqua&gt;diamond&lt;/aqua&gt;!
+            <aqua>diamond</aqua>!
+            ]]>
         </message>
         <item src="minecraft:diamond">
             <description>The diamond in question</description>
@@ -108,7 +110,7 @@ dependencies {
     </body>
     <inputs>
         <input type="range" start="1" end="10" step="1" id="appraisal">
-            <label>&lt;rainbow&gt;Appraisal&lt;/rainbow&gt;</label>
+            <label><rainbow>Appraisal</rainbow></label>
         </input>
     </inputs>
     <footer>
@@ -128,7 +130,8 @@ dependencies {
 > with XML tooling, especially IDE inspections as no language
 > server for MiniDialog exists at this time. Configuring IDEA to
 > interpret `.mdlg` files as XML and including the DTD should
-> be enough to get usable inspections.
+> be enough to get usable inspections. `CDATA` sections are narrowly
+> supported around rich text to stop IDEs from attempting to inspect them.
 
 > [!IMPORTANT]
 > Due to vanilla technical limitations, server implementations of

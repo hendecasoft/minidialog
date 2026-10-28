@@ -236,16 +236,26 @@ public final class TokenReader {
         }
         buf.setLength(len);
 
+        // Collect and strip CDATA
+        String source = buf.toString();
+        source = stripCData(source);
+
         // Parse
         Component text;
         try {
-            text = mini.deserialize(buf.toString());
+            text = mini.deserialize(source);
         } catch (ParsingException e) {
             DialogParseException ex = new DialogParseException("Failed to parse MiniMessage text", this.source.line(), this.source.column());
             ex.addSuppressed(e);
             throw ex;
         }
         return Token.text(text);
+    }
+
+    private String stripCData(String src) {
+        if (!src.startsWith("<![CDATA[")) return src;
+        if (!src.endsWith("]]>")) this.source.raise("Unclosed CDATA");
+        return src.substring(9, src.length() - 3);
     }
 
     private void consumeComment(EnterTagInfo info) {
