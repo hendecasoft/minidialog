@@ -3,6 +3,7 @@ plugins {
     id("java-library")
     alias(libs.plugins.indra)
     alias(libs.plugins.indra.licenser)
+    alias(libs.plugins.indra.publishing)
 }
 
 description = "The MiniDialog UI library for Sponge"
