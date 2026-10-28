@@ -14,35 +14,32 @@
  * limitations under the License.
  */
 
-package moe.hendeca.minidialog.client;
+package moe.hendeca.minidialog.client.response;
 
-import moe.hendeca.minidialog.FabricDialog;
-import moe.hendeca.minidialog.client.response.FabricClientDialogResponse;
+import moe.hendeca.minidialog.TokenizedDialogKeyFactory;
+import moe.hendeca.minidialog.client.ModdedClientDialogUser;
 import moe.hendeca.minidialog.element.DialogElement;
-import moe.hendeca.minidialog.manager.DialogManager;
+import moe.hendeca.minidialog.response.ModdedDialogResponse;
+import moe.hendeca.minidialog.response.VanillaDialogResponse;
 import net.minecraft.nbt.Tag;
+import org.jetbrains.annotations.ApiStatus;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
 @NullMarked
-public final class FabricClientDialog
-        extends VanillaClientDialog<FabricClientMiniDialog, FabricClientDialogUser>
-        implements FabricDialog
+public final class ModdedClientDialogResponse
+        extends VanillaDialogResponse<ModdedClientDialogUser>
+        implements ModdedDialogResponse
 {
 
-    FabricClientDialog(
-            FabricClientMiniDialog instance,
+    @ApiStatus.Internal
+    public ModdedClientDialogResponse(
+            @Nullable Tag handle,
+            ModdedClientDialogUser user,
             DialogElement document,
-            @Nullable DialogManager manager
+            TokenizedDialogKeyFactory keyFactory
     ) {
-        super(instance, FabricClientDialogUser.class, document, manager);
-    }
-
-    //
-
-    @Override
-    protected FabricClientDialogResponse newResponse(FabricClientDialogUser user, @Nullable Tag payload) {
-        return new FabricClientDialogResponse(payload, user, this.document(), this.keyFactory);
+        super(handle, user, document, keyFactory);
     }
 
 }

@@ -24,9 +24,9 @@ import org.jspecify.annotations.NullMarked;
 
 @NullMarked
 @ApiStatus.Internal
-public abstract class VanillaClientDialogUser extends VanillaDialogUser<VanillaClientMiniDialog, LocalPlayer> {
+public abstract class VanillaClientDialogUser extends VanillaDialogUser<VanillaClientMiniDialog<?, ?>, LocalPlayer> {
 
-    protected VanillaClientDialogUser(VanillaClientMiniDialog instance, LocalPlayer handle) {
+    protected VanillaClientDialogUser(VanillaClientMiniDialog<?, ?> instance, LocalPlayer handle) {
         super(instance, handle);
     }
 

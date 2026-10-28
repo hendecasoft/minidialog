@@ -245,11 +245,11 @@ public final class SamplePlugin {
 ### Fabric & NeoForge (`minidialog-modded`)
 ```java
 // Client
-ModdedClientMiniDialog md = MiniDialog.client();
+MiniDialog md = ModdedMiniDialog.miniDialog();
 
 // Server
 MinecraftServer server = /* ... */;
-ModdedServerMiniDialog md = MiniDialog.server(server);
+MiniDialog md = ModdedMiniDialog.miniDialog(server);
 ```
 
 > [!IMPORTANT]

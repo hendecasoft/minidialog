@@ -23,13 +23,14 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.protocol.common.ClientboundClearDialogPacket;
 import net.minecraft.server.dialog.Dialog;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.Contract;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
 @NullMarked
 @ApiStatus.Internal
 public abstract class VanillaServerDialog<
-        I extends VanillaServerMiniDialog<?>,
+        I extends VanillaServerMiniDialog<?, ?>,
         U extends VanillaServerDialogUser
         > extends VanillaDialog<I, U>
 {
@@ -45,7 +46,6 @@ public abstract class VanillaServerDialog<
 
     //
 
-
     @Override
     protected void clear(U user) {
         user.handle().connection.send(ClientboundClearDialogPacket.INSTANCE);
@@ -54,6 +54,11 @@ public abstract class VanillaServerDialog<
     @Override
     protected void send(U user, Holder<Dialog> dialog) {
         user.handle().openDialog(dialog);
+    }
+
+    @Contract(pure = true)
+    protected final VanillaServerPacketListener packetListener() {
+        return this.instance.packetListener;
     }
 
 }

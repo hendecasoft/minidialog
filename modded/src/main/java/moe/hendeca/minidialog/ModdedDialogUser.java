@@ -16,28 +16,16 @@
 
 package moe.hendeca.minidialog;
 
-import moe.hendeca.minidialog.element.DialogElement;
-import moe.hendeca.minidialog.manager.DialogManager;
-import moe.hendeca.minidialog.render.DialogRenderer;
-import net.minecraft.core.Holder;
+import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.Contract;
 import org.jspecify.annotations.NullMarked;
-import org.jspecify.annotations.Nullable;
 
 @NullMarked
 @ApiStatus.NonExtendable
-public interface FabricMiniDialog extends MiniDialog {
+public interface ModdedDialogUser extends DialogUser {
 
-    @Override
-    DialogRenderer<Holder<net.minecraft.server.dialog.Dialog>> renderer();
-
-    @Override
-    FabricDialogUser user(Object handle);
-
-    @Override
-    FabricDialog init(DialogElement element, @Nullable Class<? extends DialogManager> managerClass, Object... managerArgs);
-
-    @Override
-    FabricDialog init(DialogElement element);
+    @Contract(pure = true)
+    Player handle();
 
 }

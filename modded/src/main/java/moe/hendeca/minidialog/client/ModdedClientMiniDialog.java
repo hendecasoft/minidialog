@@ -16,7 +16,7 @@
 
 package moe.hendeca.minidialog.client;
 
-import moe.hendeca.minidialog.FabricMiniDialog;
+import moe.hendeca.minidialog.ModdedMiniDialog;
 import moe.hendeca.minidialog.element.DialogElement;
 import moe.hendeca.minidialog.manager.DialogManager;
 import net.minecraft.client.Minecraft;
@@ -25,27 +25,30 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Objects;
+
 @NullMarked
-public final class FabricClientMiniDialog
-        extends VanillaClientMiniDialog<FabricClientDialog, FabricClientDialogUser>
-        implements FabricMiniDialog
+public final class ModdedClientMiniDialog
+        extends VanillaClientMiniDialog<ModdedClientDialog, ModdedClientDialogUser>
+        implements ModdedMiniDialog
 {
 
     @ApiStatus.Internal
-    public FabricClientMiniDialog(Minecraft client) {
+    public ModdedClientMiniDialog(Minecraft client) {
         super(client);
     }
 
     //
 
     @Override
-    public FabricClientDialogUser user(LocalPlayer player) {
-        return new FabricClientDialogUser(this, player);
+    public ModdedClientDialogUser user(LocalPlayer player) {
+        Objects.requireNonNull(player, "player must not be null");
+        return new ModdedClientDialogUser(this, player);
     }
 
     @Override
-    protected FabricClientDialog newDialog(DialogElement document, @Nullable DialogManager manager) {
-        return new FabricClientDialog(this, document, manager);
+    protected ModdedClientDialog newDialog(DialogElement document, @Nullable DialogManager manager) {
+        return new ModdedClientDialog(this, document, manager);
     }
 
 }

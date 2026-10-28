@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-package moe.hendeca.minidialog.response;
+package moe.hendeca.minidialog.client;
 
-import moe.hendeca.minidialog.FabricDialogUser;
-import org.jetbrains.annotations.ApiStatus;
+import moe.hendeca.minidialog.ModdedDialogUser;
+import net.minecraft.client.player.LocalPlayer;
 import org.jspecify.annotations.NullMarked;
 
 @NullMarked
-@ApiStatus.NonExtendable
-public interface FabricDialogResponse extends DialogResponse {
+public final class ModdedClientDialogUser
+        extends VanillaClientDialogUser
+        implements ModdedDialogUser
+{
 
-    @Override
-    FabricDialogUser user();
+    ModdedClientDialogUser(ModdedClientMiniDialog instance, LocalPlayer handle) {
+        super(instance, handle);
+    }
 
 }

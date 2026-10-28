@@ -16,7 +16,6 @@
 
 package moe.hendeca.minidialog.server;
 
-import moe.hendeca.minidialog.DialogUser;
 import moe.hendeca.minidialog.VanillaMiniDialog;
 import moe.hendeca.minidialog.render.DialogRenderer;
 import moe.hendeca.minidialog.render.VanillaDialogRenderer;
@@ -36,11 +35,13 @@ public abstract class VanillaServerMiniDialog<D extends VanillaServerDialog<?, ?
 {
 
     protected final MinecraftServer server;
+    final VanillaServerPacketListener packetListener;
     protected final MinecraftServerAudiences audiences;
     protected final VanillaDialogRenderer renderer;
 
     protected VanillaServerMiniDialog(MinecraftServer server) {
         this.server = server;
+        this.packetListener = new VanillaServerPacketListener(server);
         this.audiences = MinecraftServerAudiences.of(server);
         this.renderer = new VanillaDialogRenderer(this.audiences, server.registryAccess());
     }

@@ -44,7 +44,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 @NullMarked
 @ApiStatus.Internal
-public abstract class VanillaClientDialog<I extends VanillaClientMiniDialog, U extends VanillaClientDialogUser>
+public abstract class VanillaClientDialog<I extends VanillaClientMiniDialog<?, ?>, U extends VanillaClientDialogUser>
         extends VanillaDialog<I, U>
 {
 

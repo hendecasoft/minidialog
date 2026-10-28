@@ -26,6 +26,7 @@ dependencies {
     compileOnly(vanilla)
     compileOnly(ttdev.minecraftClient(libs.versions.minecraft))
     compileOnly(ttdev.minecraftServer(libs.versions.minecraft))
+    compileOnly(libs.adventure.api)
 }
 
 indra {

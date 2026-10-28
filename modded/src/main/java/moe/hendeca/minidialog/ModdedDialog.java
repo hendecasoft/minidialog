@@ -23,9 +23,9 @@ import java.util.Set;
 
 @NullMarked
 @ApiStatus.NonExtendable
-public interface FabricDialog extends Dialog {
+public interface ModdedDialog extends Dialog {
 
     @Override
-    Set<? extends FabricDialogUser> users();
+    Set<? extends ModdedDialogUser> users();
 
 }
