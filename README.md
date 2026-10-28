@@ -13,7 +13,7 @@ of the dialog.
 ## Getting MiniDialog
 Replace `PLATFORM` with the target [platform](#Platforms)
 and  replace `VERSION` with the latest version available
-[from Maven Central](https://repo1.maven.org/maven2/moe/hendeca/minidialog-api/).
+from [the repository](https://maven.hendeca.moe/#/releases/moe/hendeca).
 
 <table>
 <tr>
