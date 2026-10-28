@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialog SYSTEM "https://hendeca.moe/schema/v1/minidialog.dtd">
+<dialog>
+    <title>
+        <sprite:gui:mob_effect/luck>
+        <green>Fortune</green>
+        <sprite:gui:mob_effect/luck>
+    </title>
+    <body>
+        <message>Would you like ancient wisdom?</message>
+    </body>
+    <footer>
+        <action type="custom" id="yes">
+            <label>
+                <sprite:gui:icon/checkmark> <green>Yes please!</green>
+            </label>
+        </action>
+        <action type="custom" id="no">
+            <label>
+                <sprite:gui:player_list/remove_player> <red>No thanks.</red>
+            </label>
+        </action>
+    </footer>
+</dialog>

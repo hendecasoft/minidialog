@@ -1,0 +1,50 @@
+/*
+ * Copyright 2026 hendecasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package moe.hendeca.minidialog;
+
+import moe.hendeca.minidialog.element.DialogElement;
+import moe.hendeca.minidialog.except.DialogException;
+import moe.hendeca.minidialog.except.DialogRenderException;
+import moe.hendeca.minidialog.manager.DialogManager;
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Unmodifiable;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
+
+import java.util.Set;
+
+@NullMarked
+@ApiStatus.NonExtendable
+public interface Dialog {
+
+    @Contract(pure = true)
+    MiniDialog instance();
+
+    @Contract(pure = true)
+    DialogElement document();
+
+    @Contract(pure = true)
+    @Nullable DialogManager manager();
+
+    @Unmodifiable Set<? extends DialogUser> users();
+
+    void show(DialogUser user) throws DialogException;
+
+    void hide(DialogUser user);
+
+}

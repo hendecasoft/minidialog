@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialog SYSTEM "https://hendeca.moe/schema/v1/minidialog.dtd">
+<dialog>
+    <title>
+        <rainbow>Color Quiz</rainbow>
+    </title>
+    <body>
+        <message>What color is this item?</message>
+        <item id="item"/>
+    </body>
+    <actions>
+        <action type="custom" id="chooseBlack">
+            <label><#080a0f><b>Black</label>
+        </action>
+        <action type="custom" id="chooseWhite">
+            <label><#ced4d5><b>White</label>
+        </action>
+        <action type="custom" id="chooseGray">
+            <label><#373a3e><b>Gray</label>
+        </action>
+        <action type="custom" id="chooseLightGray">
+            <label><#7d7d73><b>Light Gray</label>
+        </action>
+        <action type="custom" id="choosePink">
+            <label><#d6658f><b>Pink</label>
+        </action>
+        <action type="custom" id="chooseRed">
+            <label><#8f2222><b>Red</label>
+        </action>
+        <action type="custom" id="chooseOrange">
+            <label><#de6000><b>Orange</label>
+        </action>
+        <action type="custom" id="chooseYellow">
+            <label><#f2b016><b>Yellow</label>
+        </action>
+        <action type="custom" id="chooseBrown">
+            <label><#603b1f><b>Brown</label>
+        </action>
+        <action type="custom" id="chooseGreen">
+            <label><#495b24><b>Green</label>
+        </action>
+        <action type="custom" id="chooseLime">
+            <label><#5da718><b>Lime</label>
+        </action>
+        <action type="custom" id="chooseCyan">
+            <label><#157687><b>Cyan</label>
+        </action>
+        <action type="custom" id="chooseLightBlue">
+            <label><#248ac8><b>Light Blue</label>
+        </action>
+        <action type="custom" id="chooseBlue">
+            <label><#2c2e8e><b>Blue</label>
+        </action>
+        <action type="custom" id="choosePurple">
+            <label><#641f9c><b>Purple</label>
+        </action>
+        <action type="custom" id="chooseMagenta">
+            <label><#a9309f><b>Magenta</label>
+        </action>
+    </actions>
+    <footer>
+        <action type="custom" id="cancel">
+            <label>Cancel</label>
+        </action>
+    </footer>
+</dialog>
