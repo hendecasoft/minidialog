@@ -1,3 +1,4 @@
+import tasks.ResolvePeersTask
 
 plugins {
     id("java-library")
@@ -14,16 +15,12 @@ repositories {
     ttdev.repository()
 }
 
-// Projects to bundle
-val internals = project(":internals")
-val vanilla = project(":internals:vanilla")
-
 dependencies {
     api(libs.jspecify)
     api(libs.annotations)
     api(project(":api"))
-    compileOnly(internals)
-    compileOnly(vanilla)
+    compileOnly(project(":internals"))
+    compileOnly(project(":internals:vanilla"))
     compileOnly(ttdev.minecraftClient(libs.versions.minecraft))
     compileOnly(ttdev.minecraftServer(libs.versions.minecraft))
     compileOnly(libs.adventure.api)
@@ -77,9 +74,12 @@ tasks.withType(Jar::class) {
     archiveBaseName = "minidialog-modded"
 }
 
+val resolvePeers = tasks.register("resolvePeers", ResolvePeersTask::class) {
+    description = "Flatten peer projects for use in processResources"
+    from(project(":internals"), project(":internals:vanilla"))
+}
+
 tasks.processResources {
-    listOf(internals, vanilla).forEach { p ->
-        dependsOn(p.tasks.assemble)
-        from(p.sourceSets.main.map { it.output.classesDirs.singleFile })
-    }
+    dependsOn(resolvePeers)
+    from(resolvePeers.map { it.outputs.files.singleFile })
 }

@@ -1,3 +1,4 @@
+import tasks.ResolvePeersTask
 
 plugins {
     id("java-library")
@@ -13,14 +14,11 @@ repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
 }
 
-// Reference to the internals project for bundling
-val internals = project(":internals")
-
 dependencies {
     api(libs.jspecify)
     api(libs.annotations)
     api(project(":api"))
-    compileOnly(internals)
+    compileOnly(project(":internals"))
     compileOnly(libs.paper.api)
 }
 
@@ -66,7 +64,12 @@ tasks.withType(Jar::class) {
     archiveBaseName = "minidialog-paper"
 }
 
+val resolvePeers = tasks.register("resolvePeers", ResolvePeersTask::class) {
+    description = "Flatten peer projects for use in processResources"
+    from(project(":internals"))
+}
+
 tasks.processResources {
-    dependsOn(internals.tasks.assemble)
-    from(internals.sourceSets.main.map { it.output.classesDirs.singleFile })
+    dependsOn(resolvePeers)
+    from(resolvePeers.map { it.outputs.files.singleFile })
 }

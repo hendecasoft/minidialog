@@ -1,3 +1,4 @@
+import tasks.ResolvePeersTask
 
 plugins {
     id("java-library")
@@ -14,16 +15,12 @@ repositories {
     maven("https://repo.codemc.io/repository/maven-releases/")
 }
 
-// Projects to bundle
-val internals = project(":internals")
-val packetevents = project(":internals:packetevents")
-
 dependencies {
     api(libs.jspecify)
     api(libs.annotations)
     api(project(":api"))
-    compileOnly(internals)
-    compileOnly(packetevents)
+    compileOnly(project(":internals"))
+    compileOnly(project(":internals:packetevents"))
     compileOnly(libs.sponge.api)
     compileOnly(libs.packetevents.api)
 }
@@ -70,9 +67,12 @@ tasks.withType(Jar::class) {
     archiveBaseName = "minidialog-sponge"
 }
 
+val resolvePeers = tasks.register("resolvePeers", ResolvePeersTask::class) {
+    description = "Flatten peer projects for use in processResources"
+    from(project(":internals"), project(":internals:packetevents"))
+}
+
 tasks.processResources {
-    listOf(internals, packetevents).forEach { p ->
-        dependsOn(p.tasks.assemble)
-        from(p.sourceSets.main.map { it.output.classesDirs.singleFile })
-    }
+    dependsOn(resolvePeers)
+    from(resolvePeers.map { it.outputs.files.singleFile })
 }

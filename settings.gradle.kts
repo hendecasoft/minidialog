@@ -8,8 +8,8 @@ include(
     ":paper",
     ":paper:test-plugin",
     ":velocity",
-    ":velocity:test-plugin",
+//    ":velocity:test-plugin",
     ":sponge",
-    ":sponge:test-plugin",
+//    ":sponge:test-plugin",
     ":modded"
 )
