@@ -95,7 +95,7 @@ dependencies {
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE dialog SYSTEM "https://hendeca.moe/schema/v1/minidialog.dtd">
 <dialog>
-    <title>Hello &lt;b&gt;world&lt;/b&gt;!</title>
+    <title>Hello <b>world</b>!</title>
     <body>
         <message>
             <![CDATA[
